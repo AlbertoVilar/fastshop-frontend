@@ -1,6 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import { Button } from '../../components/ui/Button';
+import { PrimaryButton } from '../../components/buttons';
 import { useAuth } from '../../features/auth/AuthProvider';
 import styles from './SignInPage.module.css';
 
@@ -84,9 +84,9 @@ export const SignInPage: FC = () => {
             />
           </div>
 
-          <Button type="submit" variant="primary" fullWidth>
+          <PrimaryButton type="submit" fullWidth>
             Entrar
-          </Button>
+          </PrimaryButton>
         </form>
 
         <p className={styles.footerText}>

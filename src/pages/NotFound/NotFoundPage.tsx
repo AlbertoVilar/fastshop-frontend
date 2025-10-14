@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button } from '../../components/ui/Button';
+import { PrimaryButton, SecondaryButton } from '../../components/buttons';
 import styles from './NotFoundPage.module.css';
 
 export const NotFoundPage: FC = () => (
@@ -11,12 +11,12 @@ export const NotFoundPage: FC = () => (
       categorias disponiveis na FastShop.
     </p>
     <div className={styles.actions}>
-      <Button as="a" href="/" variant="primary">
+      <PrimaryButton as="a" href="/">
         Voltar para a home
-      </Button>
-      <Button as="a" href="/sign-in" variant="outline">
+      </PrimaryButton>
+      <SecondaryButton as="a" href="/sign-in">
         Fazer login
-      </Button>
+      </SecondaryButton>
     </div>
   </section>
 );

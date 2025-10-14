@@ -24,32 +24,9 @@
   max-width: 720px;
 }
 
-.searchForm {
-  align-items: center;
-  background: rgba(13, 18, 34, 0.85);
-  border: 1px solid rgba(40, 56, 92, 0.7);
-  border-radius: 999px;
-  box-shadow:
-    inset 0 -3px rgba(8, 12, 24, 0.75),
-    0 22px 44px rgba(5, 8, 16, 0.55);
-  display: flex;
-  gap: 0.75rem;
+.heroSearch {
   max-width: 720px;
-  padding: 0.35rem 0.35rem 0.35rem 1.25rem;
-}
-
-.searchInput {
-  background: transparent;
-  border: none;
-  color: var(--color-text);
-  flex: 1;
-  font-size: 1rem;
-  height: 44px;
-  outline: none;
-}
-
-.searchInput::placeholder {
-  color: rgba(170, 188, 209, 0.7);
+  width: 100%;
 }
 
 .categories {
@@ -119,48 +96,14 @@
   max-width: 520px;
 }
 
-.ctaForm {
-  align-items: center;
-  background: rgba(13, 18, 34, 0.85);
-  border: 1px solid rgba(40, 56, 92, 0.7);
-  border-radius: 999px;
-  box-shadow: inset 0 -3px rgba(8, 12, 24, 0.65);
-  display: flex;
-  gap: 0.75rem;
-  padding: 0.35rem 0.35rem 0.35rem 1.1rem;
-}
-
-.ctaInput {
-  background: transparent;
-  border: none;
-  color: var(--color-text);
-  flex: 1;
-  font-size: 1rem;
-  height: 44px;
-  outline: none;
-}
-
-.ctaInput::placeholder {
-  color: rgba(170, 188, 209, 0.7);
+.ctaFormWrapper {
+  max-width: 420px;
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .searchForm {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0.75rem;
-  }
-
-  .ctaForm {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0.75rem;
   }
 }
 

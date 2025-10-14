@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button } from '../../components/ui/Button';
+import { DangerButton } from '../../components/buttons';
 import { useAuth } from '../../features/auth/AuthProvider';
 import styles from './DashboardPage.module.css';
 
@@ -41,9 +41,9 @@ export const DashboardPage: FC = () => {
             certo no momento certo.
           </p>
         </div>
-        <Button type="button" variant="danger" onClick={logout}>
+        <DangerButton type="button" onClick={logout}>
           Sair
-        </Button>
+        </DangerButton>
       </header>
 
       <div className={styles.metrics}>

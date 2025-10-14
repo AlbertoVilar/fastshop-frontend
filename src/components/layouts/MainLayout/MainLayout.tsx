@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { Button } from '../../ui/Button';
+import { PrimaryButton, SecondaryButton } from '../../buttons';
 import { Container } from '../../ui/Container';
 import styles from './MainLayout.module.css';
 
@@ -28,12 +28,12 @@ export const MainLayout = () => (
           </a>
         </nav>
         <div className={styles.headerActions}>
-          <Button as="a" href="/sign-in" variant="outline">
+          <SecondaryButton as="a" href="/sign-in">
             Entrar
-          </Button>
-          <Button as="a" href="/dashboard" variant="primary">
+          </SecondaryButton>
+          <PrimaryButton as="a" href="/dashboard">
             Carrinho
-          </Button>
+          </PrimaryButton>
         </div>
       </Container>
     </header>

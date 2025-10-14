@@ -1,5 +1,9 @@
 import { FC } from 'react';
-import { Button } from '../../components/ui/Button';
+import {
+  PrimaryButton,
+  SecondaryButton,
+  GhostButton,
+} from '../../components/buttons';
 import {
   Card,
   CardActions,
@@ -10,6 +14,7 @@ import {
   CardTitle,
 } from '../../components/ui/Card';
 import { Chip } from '../../components/ui/Chip';
+import { SearchBar, NewsletterSignup } from '../../components/forms';
 import styles from './HomePage.module.css';
 
 const categories = [
@@ -93,17 +98,11 @@ export const HomePage: FC = () => (
         </p>
       </header>
 
-      <form className={styles.searchForm} role="search">
-        <input
-          className={styles.searchInput}
-          type="search"
-          placeholder="Busque por produtos, marcas ou categorias"
-          aria-label="Buscar produto"
-        />
-        <Button type="submit" variant="primary">
-          Buscar
-        </Button>
-      </form>
+      <SearchBar
+        className={styles.heroSearch}
+        placeholder="Busque por produtos, marcas ou categorias"
+        buttonLabel="Buscar"
+      />
 
       <div className={styles.categories} id="categorias" aria-label="Categorias em destaque">
         {categories.map((category) => (
@@ -120,9 +119,9 @@ export const HomePage: FC = () => (
           <h2 className={styles.sectionTitle}>Produtos em destaque</h2>
           <p className={styles.sectionSubtitle}>Selecionados pela nossa curadoria semanal</p>
         </div>
-        <Button variant="ghost" size="sm" type="button">
+        <GhostButton size="sm" type="button">
           Ver todos
-        </Button>
+        </GhostButton>
       </div>
 
       <div className={styles.grid}>
@@ -134,12 +133,12 @@ export const HomePage: FC = () => (
               <CardPrice>{product.price}</CardPrice>
               <CardDescription>{product.description}</CardDescription>
               <CardActions>
-                <Button variant="outline" type="button" size="sm">
+                <SecondaryButton type="button" size="sm">
                   Detalhes
-                </Button>
-                <Button variant="primary" type="button" size="sm">
+                </SecondaryButton>
+                <PrimaryButton type="button" size="sm">
                   Adicionar
-                </Button>
+                </PrimaryButton>
               </CardActions>
             </CardBody>
           </Card>
@@ -156,12 +155,11 @@ export const HomePage: FC = () => (
             feito pela equipe FastShop.
           </p>
         </div>
-        <form className={styles.ctaForm}>
-          <input className={styles.ctaInput} type="email" placeholder="Seu melhor e-mail" />
-          <Button type="submit" variant="primary">
-            Quero receber
-          </Button>
-        </form>
+        <NewsletterSignup
+          className={styles.ctaFormWrapper}
+          placeholder="Seu melhor e-mail"
+          buttonLabel="Quero receber"
+        />
       </div>
     </section>
   </div>
