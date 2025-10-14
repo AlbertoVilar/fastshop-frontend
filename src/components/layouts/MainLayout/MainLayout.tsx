@@ -1,60 +1,53 @@
-import { CSSProperties } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { Button } from '../../ui/Button';
+import { Container } from '../../ui/Container';
+import styles from './MainLayout.module.css';
 
-const linkBaseStyle: CSSProperties = {
-  display: 'inline-block',
-  padding: '0.5rem 1rem',
-  borderRadius: '0.375rem',
-  textDecoration: 'none',
-  color: '#1f2933',
-};
-
-const activeStyle: CSSProperties = {
-  ...linkBaseStyle,
-  backgroundColor: '#1f6feb',
-  color: '#ffffff',
-};
+const getNavClassName = ({ isActive }: { isActive: boolean }) =>
+  [styles.navLink, isActive ? styles.navLinkActive : ''].filter(Boolean).join(' ');
 
 export const MainLayout = () => (
-  <div style={{ minHeight: '100vh', backgroundColor: '#f5f7fa' }}>
-    <header
-      style={{
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #e0e7ff',
-        padding: '1rem',
-      }}
-    >
-      <div
-        style={{
-          margin: '0 auto',
-          maxWidth: '960px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-        <strong style={{ fontSize: '1.125rem' }}>Fastshop</strong>
-        <nav style={{ display: 'flex', gap: '0.5rem' }}>
-          <NavLink to="/" end style={({ isActive }) => (isActive ? activeStyle : linkBaseStyle)}>
-            Home
+  <div className={styles.shell}>
+    <header className={styles.header}>
+      <Container className={styles.headerContent}>
+        <NavLink to="/" className={styles.brand}>
+          FastShop
+        </NavLink>
+        <nav className={styles.nav}>
+          <NavLink to="/" end className={getNavClassName}>
+            Produtos
           </NavLink>
-          <NavLink
-            to="/dashboard"
-            style={({ isActive }) => (isActive ? activeStyle : linkBaseStyle)}
-          >
-            Dashboard
+          <a className={styles.navLink} href="#categorias">
+            Categorias
+          </a>
+          <NavLink to="/dashboard" className={getNavClassName}>
+            Ofertas
           </NavLink>
-          <NavLink
-            to="/sign-in"
-            style={({ isActive }) => (isActive ? activeStyle : linkBaseStyle)}
-          >
-            Entrar
-          </NavLink>
+          <a className={styles.navLink} href="#contato">
+            Contato
+          </a>
         </nav>
-      </div>
+        <div className={styles.headerActions}>
+          <Button as="a" href="/sign-in" variant="outline">
+            Entrar
+          </Button>
+          <Button as="a" href="/dashboard" variant="primary">
+            Carrinho
+          </Button>
+        </div>
+      </Container>
     </header>
-    <main style={{ margin: '0 auto', maxWidth: '960px', padding: '2rem 1rem' }}>
-      <Outlet />
+    <main className={styles.main}>
+      <Container>
+        <Outlet />
+      </Container>
     </main>
+    <footer className={styles.footer}>
+      <Container>
+        <small>
+          {`Copyright ${new Date().getFullYear()} FastShop - todos os direitos reservados.`}
+        </small>
+      </Container>
+    </footer>
   </div>
 );
