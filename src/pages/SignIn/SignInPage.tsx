@@ -1,6 +1,8 @@
 import { FC, FormEvent, useState } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Button } from '../../components/ui/Button';
 import { useAuth } from '../../features/auth/AuthProvider';
+import styles from './SignInPage.module.css';
 
 type RedirectState = {
   from?: {
@@ -23,68 +25,77 @@ export const SignInPage: FC = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO: conectar com fluxo real de autenticação
+
     if (email && password) {
       login();
     }
   };
 
   return (
-    <section style={{ maxWidth: '420px' }}>
-      <h1 style={{ fontSize: '1.75rem', marginBottom: '1rem' }}>Entrar</h1>
-      <p style={{ color: '#52606d', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-        Use o formulário abaixo para acessar o sistema. No futuro você pode integrar com a API real.
-      </p>
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
-        noValidate
-      >
-        <label style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <span style={{ fontWeight: 600 }}>E-mail</span>
-          <input
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="seu@email.com"
-            style={{
-              padding: '0.75rem 1rem',
-              borderRadius: '0.375rem',
-              border: '1px solid #cbd2d9',
-            }}
-            required
-          />
-        </label>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <span style={{ fontWeight: 600 }}>Senha</span>
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            placeholder="********"
-            style={{
-              padding: '0.75rem 1rem',
-              borderRadius: '0.375rem',
-              border: '1px solid #cbd2d9',
-            }}
-            required
-          />
-        </label>
-        <button
-          type="submit"
-          style={{
-            backgroundColor: '#1f6feb',
-            border: 'none',
-            borderRadius: '0.375rem',
-            color: '#ffffff',
-            cursor: 'pointer',
-            padding: '0.75rem 1.5rem',
-            fontWeight: 600,
-          }}
-        >
-          Entrar
-        </button>
-      </form>
-    </section>
+    <div className={styles.wrapper}>
+      <section className={styles.card}>
+        <header>
+          <h1 className={styles.title}>Entrar</h1>
+          <p className={styles.subtitle}>
+            Acesse sua conta FastShop e acompanhe pedidos, listas e recomendacoes personalizadas.
+          </p>
+        </header>
+
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
+          <div className={styles.field}>
+            <div className={styles.labelRow}>
+              <label className={styles.label} htmlFor="email">
+                E-mail
+              </label>
+              <button type="button" className={styles.link}>
+                Esqueci o e-mail
+              </button>
+            </div>
+            <input
+              id="email"
+              className={styles.input}
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="seu@email.com"
+              required
+              autoComplete="email"
+            />
+          </div>
+
+          <div className={styles.field}>
+            <div className={styles.labelRow}>
+              <label className={styles.label} htmlFor="password">
+                Senha
+              </label>
+              <button type="button" className={styles.link}>
+                Esqueci a senha
+              </button>
+            </div>
+            <input
+              id="password"
+              className={styles.input}
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder="********"
+              required
+              autoComplete="current-password"
+            />
+          </div>
+
+          <Button type="submit" variant="primary" fullWidth>
+            Entrar
+          </Button>
+        </form>
+
+        <p className={styles.footerText}>
+          Ainda nao tem conta?{' '}
+          <Link to="/sign-up" className={styles.link}>
+            Criar conta
+          </Link>
+        </p>
+      </section>
+    </div>
   );
 };

@@ -1,0 +1,82 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(17, 22, 42, 0.8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  max-width: 420px;
+  padding: 2.5rem 2.25rem;
+  width: 100%;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.input {
+  background: rgba(11, 15, 26, 0.65);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(79, 140, 255, 0.3);
+}
+
+.link {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
+
+.footerText {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin: 0;
+  text-align: center;
+}
