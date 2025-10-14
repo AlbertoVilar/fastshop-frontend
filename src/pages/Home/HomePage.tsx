@@ -1,9 +1,5 @@
 import { FC } from 'react';
-import {
-  PrimaryButton,
-  SecondaryButton,
-  GhostButton,
-} from '../../components/buttons';
+import { PrimaryButton, SecondaryButton, GhostButton } from '../../components/buttons';
 import {
   Card,
   CardActions,
@@ -14,6 +10,7 @@ import {
   CardTitle,
 } from '../../components/ui/Card';
 import { Chip } from '../../components/ui/Chip';
+import { ProductList } from '../../components/ProductList';
 import { SearchBar, NewsletterSignup } from '../../components/forms';
 import styles from './HomePage.module.css';
 
@@ -162,5 +159,7 @@ export const HomePage: FC = () => (
         />
       </div>
     </section>
+
+    <ProductList />
   </div>
 );
