@@ -1,0 +1,23 @@
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 1rem 0 4rem;
+}
+
+.intro {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 720px;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.description {
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin: 0;
+}

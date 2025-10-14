@@ -14,7 +14,7 @@ export const MainLayout = () => (
           FastShop
         </NavLink>
         <nav className={styles.nav}>
-          <NavLink to="/" end className={getNavClassName}>
+          <NavLink to="/catalog" className={getNavClassName}>
             Produtos
           </NavLink>
           <a className={styles.navLink} href="#categorias">
