@@ -26,3 +26,12 @@
 .item {
   display: block;
 }
+
+.descriptionClamp {
+  color: var(--color-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 4.5rem;
+}

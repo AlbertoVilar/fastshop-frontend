@@ -1,4 +1,5 @@
 import { FC, useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   fetchProducts,
   type ApiError,
@@ -23,6 +24,7 @@ export const ProductList: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const normalizedProducts = useMemo(
     () =>
@@ -128,9 +130,15 @@ export const ProductList: FC = () => {
                 <CardBody>
                   <CardTitle>{product.displayName}</CardTitle>
                   <CardPrice>{formatCurrency(product.price)}</CardPrice>
-                  <CardDescription>{product.displayDescription}</CardDescription>
+                  <CardDescription className={styles.descriptionClamp}>
+                    {product.displayDescription}
+                  </CardDescription>
                   <CardActions>
-                    <SecondaryButton size="sm" type="button">
+                    <SecondaryButton
+                      size="sm"
+                      type="button"
+                      onClick={() => navigate(`/catalog/${product.id}`)}
+                    >
                       Detalhes
                     </SecondaryButton>
                     <PrimaryButton size="sm" type="button">

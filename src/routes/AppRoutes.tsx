@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { MainLayout } from '../components/layouts/MainLayout/MainLayout';
 import { DashboardPage } from '../pages/Dashboard/DashboardPage';
 import { CatalogPage } from '../pages/Catalog/CatalogPage';
+import { ProductDetailPage } from '../pages/ProductDetail/ProductDetailPage';
 import { HomePage } from '../pages/Home/HomePage';
 import { NotFoundPage } from '../pages/NotFound/NotFoundPage';
 import { SignInPage } from '../pages/SignIn/SignInPage';
@@ -12,6 +13,7 @@ export const AppRoutes = () => (
     <Route element={<MainLayout />}>
       <Route index element={<HomePage />} />
       <Route path="catalog" element={<CatalogPage />} />
+      <Route path="catalog/:productId" element={<ProductDetailPage />} />
       <Route
         path="dashboard"
         element={
