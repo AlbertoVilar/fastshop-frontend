@@ -16,10 +16,33 @@ import {
 import { PrimaryButton, SecondaryButton } from '../buttons';
 import styles from './ProductList.module.css';
 
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+
 export const ProductList: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const normalizedProducts = useMemo(
+    () =>
+      products.map((product) => {
+        const displayName = product.name && product.name.trim() ? product.name.trim() : 'Produto';
+        const displayDescription =
+          product.description && product.description.trim()
+            ? product.description.trim()
+            : 'Descrição não disponível.';
+        const displayImage = product.imageUrl ?? product.imgUrl ?? '';
+
+        return {
+          ...product,
+          displayName,
+          displayDescription,
+          displayImage,
+        };
+      }),
+    [products]
+  );
 
   useEffect(() => {
     let isMounted = true;
@@ -84,24 +107,6 @@ export const ProductList: FC = () => {
     );
   }
 
-  const normalizedProducts = useMemo(
-    () =>
-      products.map((product) => {
-        const displayName = product.name?.trim() ? product.name.trim() : 'Produto sem nome';
-        const displayDescription =
-          product.description?.trim() ?? 'Descrição não disponível no momento.';
-        const displayImage = product.imageUrl ?? product.imgUrl ?? '';
-
-        return {
-          ...product,
-          displayName,
-          displayDescription,
-          displayImage,
-        };
-      }),
-    [products]
-  );
-
   return (
     <section className={styles.wrapper} aria-labelledby="product-list-heading">
       <h2 className={styles.heading} id="product-list-heading">
@@ -122,12 +127,7 @@ export const ProductList: FC = () => {
                 )}
                 <CardBody>
                   <CardTitle>{product.displayName}</CardTitle>
-                  <CardPrice>
-                    {new Intl.NumberFormat('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    }).format(product.price)}
-                  </CardPrice>
+                  <CardPrice>{formatCurrency(product.price)}</CardPrice>
                   <CardDescription>{product.displayDescription}</CardDescription>
                   <CardActions>
                     <SecondaryButton size="sm" type="button">
