@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { fetchProducts, type ApiError, type Product } from '../../services/productService';
+import styles from './ProductList.module.css';
 
 export const ProductList: FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -43,33 +44,50 @@ export const ProductList: FC = () => {
 
   if (isLoading) {
     return (
-      <section aria-busy="true" aria-labelledby="product-list-heading">
-        <h2 id="product-list-heading">Produtos</h2>
-        <p>Carregando produtos...</p>
+      <section className={styles.wrapper} aria-busy="true" aria-labelledby="product-list-heading">
+        <h2 className={styles.heading} id="product-list-heading">
+          Produtos
+        </h2>
+        <p className={styles.status}>Carregando produtos...</p>
       </section>
     );
   }
 
   if (errorMessage) {
     return (
-      <section aria-live="polite" aria-labelledby="product-list-heading">
-        <h2 id="product-list-heading">Produtos</h2>
-        <p role="alert">{errorMessage}</p>
+      <section
+        className={styles.wrapper}
+        aria-live="polite"
+        aria-labelledby="product-list-heading"
+      >
+        <h2 className={styles.heading} id="product-list-heading">
+          Produtos
+        </h2>
+        <p className={styles.status} role="alert">
+          {errorMessage}
+        </p>
       </section>
     );
   }
 
   return (
-    <section aria-labelledby="product-list-heading">
-      <h2 id="product-list-heading">Produtos</h2>
+    <section className={styles.wrapper} aria-labelledby="product-list-heading">
+      <h2 className={styles.heading} id="product-list-heading">
+        Produtos
+      </h2>
       {products.length === 0 ? (
-        <p>Nenhum produto disponível.</p>
+        <p className={styles.status}>Nenhum produto disponível.</p>
       ) : (
-        <ul>
+        <ul className={styles.grid}>
           {products.map((product) => (
-            <li key={product.id}>
-              <h3>{product.name}</h3>
-              <p>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}</p>
+            <li className={styles.item} key={product.id}>
+              <h3 className={styles.itemTitle}>{product.name}</h3>
+              <p className={styles.itemPrice}>
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }).format(product.price)}
+              </p>
             </li>
           ))}
         </ul>
