@@ -5,7 +5,11 @@ export type Product = {
   name: string;
   description?: string;
   price: number;
+  imageUrl?: string;
   imgUrl?: string;
+  stock?: number;
+  categoryId?: number;
+  categoryName?: string;
   [key: string]: unknown;
 };
 
@@ -36,4 +40,3 @@ export const fetchProducts = async (): Promise<Product[]> => {
   (error as Error & { details?: ApiError }).details = errorPayload;
   throw error;
 };
-

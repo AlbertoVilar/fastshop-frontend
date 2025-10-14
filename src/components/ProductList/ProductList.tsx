@@ -1,5 +1,19 @@
-import { FC, useEffect, useState } from 'react';
-import { fetchProducts, type ApiError, type Product } from '../../services/productService';
+import { FC, useEffect, useMemo, useState } from 'react';
+import {
+  fetchProducts,
+  type ApiError,
+  type Product,
+} from '../../services/productService';
+import {
+  Card,
+  CardActions,
+  CardBody,
+  CardDescription,
+  CardMedia,
+  CardPrice,
+  CardTitle,
+} from '../ui/Card';
+import { PrimaryButton, SecondaryButton } from '../buttons';
 import styles from './ProductList.module.css';
 
 export const ProductList: FC = () => {
@@ -70,24 +84,61 @@ export const ProductList: FC = () => {
     );
   }
 
+  const normalizedProducts = useMemo(
+    () =>
+      products.map((product) => {
+        const displayName = product.name?.trim() ? product.name.trim() : 'Produto sem nome';
+        const displayDescription =
+          product.description?.trim() ?? 'Descrição não disponível no momento.';
+        const displayImage = product.imageUrl ?? product.imgUrl ?? '';
+
+        return {
+          ...product,
+          displayName,
+          displayDescription,
+          displayImage,
+        };
+      }),
+    [products]
+  );
+
   return (
     <section className={styles.wrapper} aria-labelledby="product-list-heading">
       <h2 className={styles.heading} id="product-list-heading">
         Produtos
       </h2>
-      {products.length === 0 ? (
+      {normalizedProducts.length === 0 ? (
         <p className={styles.status}>Nenhum produto disponível.</p>
       ) : (
         <ul className={styles.grid}>
-          {products.map((product) => (
+          {normalizedProducts.map((product) => (
             <li className={styles.item} key={product.id}>
-              <h3 className={styles.itemTitle}>{product.name}</h3>
-              <p className={styles.itemPrice}>
-                {new Intl.NumberFormat('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                }).format(product.price)}
-              </p>
+              <Card>
+                {product.displayImage && (
+                  <CardMedia
+                    src={`${product.displayImage}?auto=format&fit=crop&w=640&q=80`}
+                    alt={product.displayName}
+                  />
+                )}
+                <CardBody>
+                  <CardTitle>{product.displayName}</CardTitle>
+                  <CardPrice>
+                    {new Intl.NumberFormat('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    }).format(product.price)}
+                  </CardPrice>
+                  <CardDescription>{product.displayDescription}</CardDescription>
+                  <CardActions>
+                    <SecondaryButton size="sm" type="button">
+                      Detalhes
+                    </SecondaryButton>
+                    <PrimaryButton size="sm" type="button">
+                      Adicionar
+                    </PrimaryButton>
+                  </CardActions>
+                </CardBody>
+              </Card>
             </li>
           ))}
         </ul>
