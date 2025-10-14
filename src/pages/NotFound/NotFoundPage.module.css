@@ -1,0 +1,33 @@
+.wrapper {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+  padding: 3rem 0;
+}
+
+.badge {
+  border: 1px solid rgba(124, 92, 255, 0.4);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0;
+}
+
+.text {
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 520px;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}

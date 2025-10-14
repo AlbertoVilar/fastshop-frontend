@@ -1,16 +1,22 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Button } from '../../components/ui/Button';
+import styles from './NotFoundPage.module.css';
 
 export const NotFoundPage: FC = () => (
-  <section>
-    <h1 style={{ fontSize: '1.75rem', marginBottom: '1rem' }}>Página não encontrada</h1>
-    <p style={{ color: '#52606d', lineHeight: 1.6 }}>
-      O recurso solicitado não existe. Verifique o endereço ou retorne para a página inicial.
+  <section className={styles.wrapper}>
+    <span className={styles.badge}>Erro 404</span>
+    <h1 className={styles.title}>Conteudo nao encontrado</h1>
+    <p className={styles.text}>
+      Nao encontramos a pagina que voce procura. Revise o endereco digitado ou explore as ofertas e
+      categorias disponiveis na FastShop.
     </p>
-    <p style={{ marginTop: '1.5rem' }}>
-      <Link to="/" style={{ color: '#1f6feb', fontWeight: 600 }}>
+    <div className={styles.actions}>
+      <Button as="a" href="/" variant="primary">
         Voltar para a home
-      </Link>
-    </p>
+      </Button>
+      <Button as="a" href="/sign-in" variant="outline">
+        Fazer login
+      </Button>
+    </div>
   </section>
 );
