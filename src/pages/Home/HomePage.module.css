@@ -1,0 +1,176 @@
+.hero {
+  padding: 4.5rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.heroHeader {
+  display: grid;
+  gap: 1rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.25rem, 5.2vw, 3.75rem);
+  line-height: 1.08;
+  margin: 0;
+}
+
+.heroSubtitle {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 720px;
+}
+
+.searchForm {
+  align-items: center;
+  background: rgba(13, 18, 34, 0.85);
+  border: 1px solid rgba(40, 56, 92, 0.7);
+  border-radius: 999px;
+  box-shadow:
+    inset 0 -3px rgba(8, 12, 24, 0.75),
+    0 22px 44px rgba(5, 8, 16, 0.55);
+  display: flex;
+  gap: 0.75rem;
+  max-width: 720px;
+  padding: 0.35rem 0.35rem 0.35rem 1.25rem;
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  flex: 1;
+  font-size: 1rem;
+  height: 44px;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: rgba(170, 188, 209, 0.7);
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.section {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.sectionHeader {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.sectionSubtitle {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cta {
+  margin: 4rem 0 2.5rem;
+}
+
+.ctaContent {
+  align-items: center;
+  background: linear-gradient(180deg, rgba(20, 26, 45, 0.95) 0%, rgba(17, 22, 42, 0.95) 100%);
+  border: 1px solid rgba(36, 49, 78, 0.85);
+  border-radius: var(--radius-lg);
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr auto;
+  padding: 2.25rem 2rem;
+  box-shadow:
+    inset 0 -4px rgba(8, 12, 24, 0.7),
+    0 26px 44px rgba(8, 12, 24, 0.55);
+}
+
+.ctaTitle {
+  font-size: 1.9rem;
+  margin: 0 0 0.75rem;
+}
+
+.ctaText {
+  color: var(--color-muted);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.ctaForm {
+  align-items: center;
+  background: rgba(13, 18, 34, 0.85);
+  border: 1px solid rgba(40, 56, 92, 0.7);
+  border-radius: 999px;
+  box-shadow: inset 0 -3px rgba(8, 12, 24, 0.65);
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.35rem 0.35rem 0.35rem 1.1rem;
+}
+
+.ctaInput {
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  flex: 1;
+  font-size: 1rem;
+  height: 44px;
+  outline: none;
+}
+
+.ctaInput::placeholder {
+  color: rgba(170, 188, 209, 0.7);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .searchForm {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem;
+  }
+
+  .ctaForm {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
