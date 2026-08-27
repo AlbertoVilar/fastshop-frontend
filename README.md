@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# FastShop Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend do projeto FastShop, uma aplicação de e-commerce desenvolvida para consumir a API REST do [FastShop Backend](https://github.com/AlbertoVilar/fastshop-backend).
 
-## Available Scripts
+## Tecnologias
 
-In the project directory, you can run:
+- React 19
+- TypeScript
+- React Router
+- CSS Modules
+- Create React App
 
-### `npm start`
+## Funcionalidades atuais
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Página inicial com vitrine e categorias.
+- Catálogo de produtos integrado aos endpoints públicos do backend.
+- Página de detalhes do produto.
+- Rotas protegidas e tela de login em construção.
+- Tratamento básico de erros nas requisições de produtos.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> O catálogo consulta a API. A autenticação visual do frontend ainda não está integrada ao JWT do backend.
 
-### `npm test`
+## Estrutura
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+├── app/          # composição da aplicação e providers
+├── components/   # componentes reutilizáveis
+├── features/     # recursos por domínio
+├── pages/        # páginas e estilos
+├── routes/       # rotas e proteção de acesso
+└── services/     # integração com a API
+```
 
-### `npm run build`
+## Como executar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pré-requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js 20 ou superior
+- npm
+- [FastShop Backend](https://github.com/AlbertoVilar/fastshop-backend) em execução
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Configuração
 
-### `npm run eject`
+Crie um arquivo `.env` na raiz do projeto:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```env
+REACT_APP_API_BASE_URL=http://localhost:8080
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Instale as dependências e inicie a aplicação:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm install
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+A aplicação ficará disponível em [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Scripts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Comando | Descrição |
+| --- | --- |
+| `npm start` | Inicia o ambiente de desenvolvimento. |
+| `npm test` | Executa os testes no modo interativo. |
+| `npm run build` | Gera o build de produção em `build/`. |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Integração com o backend
 
-### Code Splitting
+A URL da API é definida por `REACT_APP_API_BASE_URL`. Sem essa variável, o projeto usa `http://localhost:8080`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Para o catálogo carregar corretamente, inicie o backend e verifique se o CORS permite a origem do frontend, normalmente `http://localhost:3000`.
 
-### Analyzing the Bundle Size
+## Próximos passos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Integrar login e armazenamento seguro do token JWT.
+- Conectar dashboard, carrinho e pedidos à API.
+- Adicionar testes de componentes e fluxos de navegação.
+- Publicar uma demonstração do frontend.
 
-### Making a Progressive Web App
+## Autor
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Alberto Vilar](https://github.com/AlbertoVilar)
